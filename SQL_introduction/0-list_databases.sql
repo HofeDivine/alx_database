@@ -1,3 +1,4 @@
+--lets check the list of databases
 import mysql.connector
 
 def list_databases(host, user, password):
