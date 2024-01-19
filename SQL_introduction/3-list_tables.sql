@@ -2,5 +2,4 @@
 SET @database_nane = ?; 
 USE database_nane;
 
-SET @query = CONTACT('SHOW TABLES;
-');
+SET @query = 'SHOW TABLES;';
