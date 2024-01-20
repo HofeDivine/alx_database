@@ -3,7 +3,7 @@ DELIMITER //
 
 CREATE PROCEDURE ListTables(IN dbName VARCHAR(255))
 BEGIN
-    DECLARE query VARCHAR(1024);
+    
 
     SET query = CONCAT('USE ', dbName, '; SHOW TABLES;');
     PREPARE stmt FROM query;
