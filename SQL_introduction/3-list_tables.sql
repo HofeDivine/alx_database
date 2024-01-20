@@ -3,13 +3,12 @@ DELIMITER //
 
 CREATE PROCEDURE ListTables(IN dbName VARCHAR(255))
 BEGIN
-    
-
-    SET @query = CONCAT('USE ', dbName, '; SHOW TABLES;');
+    SET @query = CONCAT('USE ', dbName, ';');
     PREPARE stmt FROM @query;
     EXECUTE stmt;
     DEALLOCATE PREPARE stmt;
+
+    SHOW TABLES;
 END //
 
 DELIMITER ;
-
