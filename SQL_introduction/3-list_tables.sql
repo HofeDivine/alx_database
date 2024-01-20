@@ -1,8 +1,12 @@
 -- A script that lists all the tables of a database in your MySQL server.
-SET @database_name = ?; 
-USE @database_name;
+DELIMITER //
 
-SET @query = 'SHOW TABLES;';
-PREPARE stmt FROM @query;
-EXECUTE stmt;
-DEALLOCATE PREPARE stmt;
+CREATE PROCEDURE ListTables(IN mysql VARCHAR(255))
+BEGIN
+    SET @query = CONCAT('USE ', mysql, '; SHOW TABLES;');
+    PREPARE stmt FROM @query;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+END //
+
+DELIMITER ;
