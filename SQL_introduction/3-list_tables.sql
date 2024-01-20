@@ -1,14 +1,13 @@
 -- A script that lists all the tables of a database in your MySQL server.
-DELIMITER //
-
-CREATE PROCEDURE ListTables(IN dbName VARCHAR(255))
+CREATE PROCEDURE ListTables(IN dbName VARCHAR(255), OUT result VARCHAR(1024))
 BEGIN
-    SET @query = CONCAT('USE ', dbName, ';');
+    SET @query = CONCAT('USE ', dbName, '; SHOW TABLES;');
+    SET result = '';
+
     PREPARE stmt FROM @query;
     EXECUTE stmt;
     DEALLOCATE PREPARE stmt;
-
-    SHOW TABLES;
 END //
 
-DELIMITER ;
+
+
